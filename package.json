@@ -1,0 +1,32 @@
+{
+  "name": "eco-marketplace-backend",
+  "version": "1.0.0",
+  "description": "Backend API for eco-friendly sustainable marketplace",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node database/seed.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "multer": "^1.4.5-lts.1",
+    "sqlite3": "^5.1.6",
+    "dotenv": "^16.3.1",
+    "socket.io": "^4.7.2",
+    "cloudinary": "^1.41.0",
+    "nodemailer": "^6.9.7",
+    "stripe": "^14.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0"
+  },
+  "keywords": ["eco-friendly", "marketplace", "sustainable", "second-hand"],
+  "author": "Your Name",
+  "license": "MIT"
+}
