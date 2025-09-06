@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - EcoMarket</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">EcoMarket</a></h1>
+            </div>
+            <nav class="nav" id="mainNav">
+                <a href="marketplace.html" class="nav-link active">Browse</a>
+                <a href="add-product.html" class="nav-link">Sell Item</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="eco-dashboard.html" class="nav-link">Eco Impact</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </nav>
+        </header>
+
+        <main class="marketplace">
+            <!-- Search and Filters Section -->
+            <section class="search-section">
+                <div class="search-header">
+                    <h2>Discover Sustainable Treasures</h2>
+                    <p>Find pre-loved items that make a difference</p>
+                </div>
+
+                <div class="search-bar">
+                    <div class="search-input-group">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" placeholder="Search for items..." class="search-input">
+                        <button class="search-btn" id="searchBtn">Search</button>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="categoryFilter">Category</label>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="books">Books</option>
+                            <option value="sports">Sports & Outdoors</option>
+                            <option value="home">Home & Garden</option>
+                            <option value="toys">Toys & Games</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="conditionFilter">Condition</label>
+                        <select id="conditionFilter" class="filter-select">
+                            <option value="">Any Condition</option>
+                            <option value="excellent">Excellent</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="priceRange">Price Range</label>
+                        <div class="price-inputs">
+                            <input type="number" id="minPrice" placeholder="Min" class="price-input">
+                            <span>-</span>
+                            <input type="number" id="maxPrice" placeholder="Max" class="price-input">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="locationFilter">Location</label>
+                        <input type="text" id="locationFilter" placeholder="City, State" class="filter-input">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="sortBy">Sort By</label>
+                        <select id="sortBy" class="filter-select">
+                            <option value="newest">Newest First</option>
+                            <option value="price_low">Price: Low to High</option>
+                            <option value="price_high">Price: High to Low</option>
+                            <option value="eco_score">Eco Score</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-secondary" id="clearFilters">Clear Filters</button>
+                </div>
+            </section>
+
+            <!-- Products Grid -->
+            <section class="products-section">
+                <div class="products-header">
+                    <h3 id="resultsCount">Loading products...</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">⊞</button>
+                        <button class="view-btn" data-view="list">☰</button>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+
+                <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                    <div class="spinner">🔄</div>
+                    <p>Loading products...</p>
+                </div>
+
+                <div class="no-results" id="noResults" style="display: none;">
+                    <div class="no-results-icon">🔍</div>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search criteria or browse all categories</p>
+                    <button class="btn btn-primary" onclick="clearAllFilters()">Clear All Filters</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="productModal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">×</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/marketplace.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - EcoMarket</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">EcoMarket</a></h1>
+            </div>
+            <nav class="nav" id="mainNav">
+                <a href="marketplace.html" class="nav-link">Browse</a>
+                <a href="add-product.html" class="nav-link">Sell Item</a>
+                <a href="wishlist.html" class="nav-link active">Wishlist</a>
+                <a href="eco-dashboard.html" class="nav-link">Eco Impact</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </nav>
+        </header>
+
+        <main class="wishlist">
+            <div class="page-header">
+                <h2>My Wishlist</h2>
+                <p>Items you've saved for later</p>
+            </div>
+
+            <div class="wishlist-content">
+                <div class="wishlist-grid" id="wishlistGrid">
+                    <!-- Wishlist items will be loaded here -->
+                </div>
+
+                <div class="empty-wishlist" id="emptyWishlist" style="display: none;">
+                    <div class="empty-icon">💚</div>
+                    <h3>Your wishlist is empty</h3>
+                    <p>Start browsing to find items you love and save them here</p>
+                    <a href="marketplace.html" class="btn btn-primary">Browse Items</a>
+                </div>
+
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner">🔄</div>
+                    <p>Loading your wishlist...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <!-- Added auth.js before wishlist.js so authentication works -->
+    <script src="js/wishlist.js"></script>
+</body>
+</html>

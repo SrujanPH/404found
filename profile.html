@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - EcoMarket</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">EcoMarket</a></h1>
+            </div>
+            <nav class="nav" id="mainNav">
+                <a href="marketplace.html" class="nav-link">Browse</a>
+                <a href="add-product.html" class="nav-link">Sell Item</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="eco-dashboard.html" class="nav-link">Eco Impact</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+            </nav>
+        </header>
+
+        <main class="profile">
+            <div class="profile-header">
+                <h2>My Profile</h2>
+                <p>Manage your account and eco-friendly journey</p>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <span class="avatar-icon">👤</span>
+                        </div>
+                        <div class="profile-details" id="profileDetails">
+                            <h3 id="userName">Loading...</h3>
+                            <p id="userEmail">Loading...</p>
+                            <p id="userLocation">Loading...</p>
+                        </div>
+                        <button class="btn btn-secondary" id="editProfileBtn">Edit Profile</button>
+                    </div>
+
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="itemsSold">0</span>
+                            <span class="stat-label">Items Sold</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="itemsBought">0</span>
+                            <span class="stat-label">Items Bought</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="ecoScore">0</span>
+                            <span class="stat-label">Eco Score</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-sections">
+                    <div class="section-tabs">
+                        <button class="tab-btn active" data-tab="listings">My Listings</button>
+                        <button class="tab-btn" data-tab="purchases">Purchases</button>
+                        <button class="tab-btn" data-tab="settings">Settings</button>
+                    </div>
+
+                    <div class="tab-content active" id="listings-tab">
+                        <div class="listings-grid" id="userListings">
+                            <!-- User's listings will be loaded here -->
+                        </div>
+                        <div class="empty-listings" id="emptyListings" style="display: none;">
+                            <div class="empty-icon">📦</div>
+                            <h4>No listings yet</h4>
+                            <p>Start selling items to see them here</p>
+                            <a href="add-product.html" class="btn btn-primary">Add Item</a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="purchases-tab">
+                        <div class="purchases-list" id="userPurchases">
+                            <!-- User's purchases will be loaded here -->
+                        </div>
+                        <div class="empty-purchases" id="emptyPurchases" style="display: none;">
+                            <div class="empty-icon">🛒</div>
+                            <h4>No purchases yet</h4>
+                            <p>Start browsing to find great items</p>
+                            <a href="marketplace.html" class="btn btn-primary">Browse Items</a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="settings-tab">
+                        <div class="settings-form">
+                            <h4>Account Settings</h4>
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="settingsName" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="settingsEmail" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" id="settingsLocation" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea id="settingsBio" class="form-textarea" rows="3" placeholder="Tell others about yourself..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary" id="saveSettingsBtn">Save Changes</button>
+                                <button class="btn btn-danger" id="logoutBtn">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

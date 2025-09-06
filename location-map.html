@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Exchange Map - EcoMarket</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🌱</span>
+                <h1>EcoMarket</h1>
+            </a>
+            <nav class="nav">
+                <a href="marketplace.html" class="nav-link">Browse</a>
+                <a href="add-product.html" class="nav-link">Sell</a>
+                <a href="location-map.html" class="nav-link active">Local Map</a>
+                <a href="eco-dashboard.html" class="nav-link">Eco Impact</a>
+                <a href="messages.html" class="nav-link">Messages</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+            </nav>
+        </header>
+
+        <main class="map-page">
+            <div class="page-header">
+                <h2>Local Exchange Map</h2>
+                <p>Find nearby sellers and arrange local pickups to reduce shipping impact</p>
+            </div>
+
+            <div class="map-container">
+                <div class="map-sidebar">
+                    <div class="location-controls">
+                        <h3>Your Location</h3>
+                        <div class="form-group">
+                            <label>Search Radius</label>
+                            <select id="radiusSelect">
+                                <option value="10">10 km</option>
+                                <option value="25" selected>25 km</option>
+                                <option value="50">50 km</option>
+                                <option value="100">100 km</option>
+                            </select>
+                        </div>
+                        <button onclick="getCurrentLocation()" class="btn btn-primary btn-full">
+                            📍 Use My Location
+                        </button>
+                        <div class="location-input">
+                            <input type="text" id="locationInput" placeholder="Or enter your address..." class="form-input">
+                            <button onclick="searchLocation()" class="btn btn-secondary">Search</button>
+                        </div>
+                    </div>
+
+                    <div class="nearby-items">
+                        <h3>Nearby Items</h3>
+                        <div id="nearbyList" class="nearby-list">
+                            <!-- Nearby items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-area">
+                    <div id="map" class="google-map">
+                        <!-- Google Map will be loaded here -->
+                        <div class="map-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🗺️</span>
+                                <h4>Interactive Map</h4>
+                                <p>Enable location services or enter your address to see nearby items</p>
+                                <button onclick="initializeMap()" class="btn btn-primary">Load Map</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="eco-benefits-section">
+                <h3>Benefits of Local Exchange</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🚚</div>
+                        <h4>Reduce Shipping</h4>
+                        <p>Eliminate packaging waste and carbon emissions from delivery trucks</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🤝</div>
+                        <h4>Meet Your Community</h4>
+                        <p>Connect with like-minded people in your neighborhood</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h4>Instant Exchange</h4>
+                        <p>Get your items immediately without waiting for delivery</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💰</div>
+                        <h4>Save Money</h4>
+                        <p>No shipping costs means better deals for everyone</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/location-map.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+</body>
+</html>

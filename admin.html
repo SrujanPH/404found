@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EcoMarket</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <h2>🌱 EcoMarket Admin</h2>
+            </div>
+            <nav class="admin-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    📊 Dashboard
+                </a>
+                <a href="#users" class="nav-item" data-section="users">
+                    👥 Users
+                </a>
+                <a href="#products" class="nav-item" data-section="products">
+                    📦 Products
+                </a>
+                <a href="#reports" class="nav-item" data-section="reports">
+                    🚨 Reports
+                </a>
+                <a href="#analytics" class="nav-item" data-section="analytics">
+                    📈 Analytics
+                </a>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    ⚙️ Settings
+                </a>
+            </nav>
+            <div class="admin-user">
+                <div class="user-info">
+                    <span id="adminUsername">Admin User</span>
+                    <button onclick="logout()" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="admin-section active">
+                <div class="section-header">
+                    <h1>Dashboard Overview</h1>
+                    <div class="header-actions">
+                        <button onclick="refreshDashboard()" class="btn btn-secondary">Refresh</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3 id="totalUsers">0</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <h3 id="totalProducts">0</h3>
+                            <p>Total Products</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 id="totalRevenue">$0</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚨</div>
+                        <div class="stat-content">
+                            <h3 id="pendingReports">0</h3>
+                            <p>Pending Reports</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-charts">
+                    <div class="chart-container">
+                        <h3>User Growth (Last 30 Days)</h3>
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Revenue Trend</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="users-section" class="admin-section">
+                <div class="section-header">
+                    <h1>User Management</h1>
+                    <div class="header-actions">
+                        <input type="text" id="userSearch" placeholder="Search users..." class="search-input">
+                        <select id="userStatusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="banned">Banned</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Eco Score</th>
+                                <th>Products</th>
+                                <th>Transactions</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination" id="usersPagination">
+                    <!-- Pagination will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Product Management</h1>
+                    <div class="header-actions">
+                        <input type="text" id="productSearch" placeholder="Search products..." class="search-input">
+                        <select id="productStatusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="sold">Sold</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="flagged">Flagged</option>
+                        </select>
+                        <select id="productCategoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="books">Books</option>
+                            <option value="sports">Sports</option>
+                            <option value="home">Home</option>
+                            <option value="toys">Toys</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Seller</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Eco Score</th>
+                                <th>Reports</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <!-- Products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination" id="productsPagination">
+                    <!-- Pagination will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Content Reports</h1>
+                    <div class="header-actions">
+                        <select id="reportStatusFilter" class="filter-select">
+                            <option value="pending">Pending</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="dismissed">Dismissed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="reports-container" id="reportsContainer">
+                    <!-- Reports will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Analytics & Insights</h1>
+                    <div class="header-actions">
+                        <select id="analyticsPeriod" class="filter-select">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30" selected>Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Category Performance</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Eco Impact</h3>
+                        <div class="eco-stats">
+                            <div class="eco-stat">
+                                <span class="eco-value" id="totalCarbon">0</span>
+                                <span class="eco-label">kg CO₂ Saved</span>
+                            </div>
+                            <div class="eco-stat">
+                                <span class="eco-value" id="totalWater">0</span>
+                                <span class="eco-label">L Water Saved</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="admin-section">
+                <div class="section-header">
+                    <h1>System Settings</h1>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Platform Settings</h3>
+                        <div class="setting-item">
+                            <label>Commission Rate (%)</label>
+                            <input type="number" id="commissionRate" value="5" min="0" max="20" step="0.1">
+                        </div>
+                        <div class="setting-item">
+                            <label>Max File Upload Size (MB)</label>
+                            <input type="number" id="maxFileSize" value="5" min="1" max="50">
+                        </div>
+                        <div class="setting-item">
+                            <label>Auto-approve Products</label>
+                            <input type="checkbox" id="autoApprove" checked>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Eco Settings</h3>
+                        <div class="setting-item">
+                            <label>Minimum Eco Score for Badges</label>
+                            <input type="number" id="minEcoScore" value="100" min="50" max="500">
+                        </div>
+                        <div class="setting-item">
+                            <label>Carbon Calculation Multiplier</label>
+                            <input type="number" id="carbonMultiplier" value="1.0" min="0.5" max="2.0" step="0.1">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button onclick="saveSettings()" class="btn btn-primary">Save Settings</button>
+                    <button onclick="resetSettings()" class="btn btn-secondary">Reset to Defaults</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>User Actions</h3>
+                <span class="close" onclick="closeModal('userModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="user-details" id="userDetails">
+                    <!-- User details will be loaded here -->
+                </div>
+                <div class="action-form">
+                    <label>Action:</label>
+                    <select id="userAction">
+                        <option value="activate">Activate</option>
+                        <option value="suspend">Suspend</option>
+                        <option value="ban">Ban</option>
+                    </select>
+                    <label>Reason:</label>
+                    <textarea id="userActionReason" placeholder="Enter reason for action..."></textarea>
+                    <div class="modal-actions">
+                        <button onclick="executeUserAction()" class="btn btn-primary">Execute Action</button>
+                        <button onclick="closeModal('userModal')" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Product Actions</h3>
+                <span class="close" onclick="closeModal('productModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="product-details" id="productDetails">
+                    <!-- Product details will be loaded here -->
+                </div>
+                <div class="action-form">
+                    <label>Action:</label>
+                    <select id="productAction">
+                        <option value="approve">Approve</option>
+                        <option value="flag">Flag</option>
+                        <option value="remove">Remove</option>
+                    </select>
+                    <label>Reason:</label>
+                    <textarea id="productActionReason" placeholder="Enter reason for action..."></textarea>
+                    <div class="modal-actions">
+                        <button onclick="executeProductAction()" class="btn btn-primary">Execute Action</button>
+                        <button onclick="closeModal('productModal')" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

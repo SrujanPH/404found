@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Dashboard - EcoMarket</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">EcoMarket</a></h1>
+            </div>
+            <nav class="nav" id="mainNav">
+                <a href="marketplace.html" class="nav-link">Browse</a>
+                <a href="add-product.html" class="nav-link">Sell Item</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="eco-dashboard.html" class="nav-link active">Eco Impact</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </nav>
+        </header>
+
+        <main class="eco-dashboard">
+            <div class="dashboard-header">
+                <h2>Your Environmental Impact</h2>
+                <p>Track your contribution to a more sustainable world</p>
+            </div>
+
+            <!-- Personal Impact Section -->
+            <section class="personal-impact">
+                <h3>Your Impact This Month</h3>
+                <div class="impact-cards">
+                    <div class="impact-card carbon">
+                        <div class="impact-icon">🌍</div>
+                        <div class="impact-content">
+                            <div class="impact-number" id="personalCarbon">0 kg</div>
+                            <div class="impact-label">CO₂ Saved</div>
+                            <div class="impact-description">Equivalent to planting <span id="treesEquivalent">0</span> trees</div>
+                        </div>
+                    </div>
+
+                    <div class="impact-card water">
+                        <div class="impact-icon">💧</div>
+                        <div class="impact-content">
+                            <div class="impact-number" id="personalWater">0 L</div>
+                            <div class="impact-label">Water Saved</div>
+                            <div class="impact-description">Enough for <span id="showersEquivalent">0</span> showers</div>
+                        </div>
+                    </div>
+
+                    <div class="impact-card money">
+                        <div class="impact-icon">💰</div>
+                        <div class="impact-content">
+                            <div class="impact-number" id="personalMoney">$0</div>
+                            <div class="impact-label">Money Saved</div>
+                            <div class="impact-description">By choosing second-hand</div>
+                        </div>
+                    </div>
+
+                    <div class="impact-card score">
+                        <div class="impact-icon">⭐</div>
+                        <div class="impact-content">
+                            <div class="impact-number" id="ecoScore">0</div>
+                            <div class="impact-label">Eco Score</div>
+                            <div class="impact-description">Your sustainability rating</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Badges Section -->
+            <section class="badges-section">
+                <h3>Eco Achievements</h3>
+                <div class="badges-container">
+                    <div class="badges-grid" id="badgesGrid">
+                        <!-- Badges will be loaded here -->
+                    </div>
+                    <div class="badges-progress">
+                        <h4>Next Achievements</h4>
+                        <div class="progress-list" id="progressList">
+                            <!-- Progress items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Carbon Calculator -->
+            <section class="calculator-section">
+                <h3>Carbon Footprint Calculator</h3>
+                <div class="calculator-card">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="calcCategory">Item Category</label>
+                            <select id="calcCategory" class="form-input">
+                                <option value="clothing">Clothing</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="books">Books</option>
+                                <option value="sports">Sports & Outdoors</option>
+                                <option value="home">Home & Garden</option>
+                                <option value="toys">Toys & Games</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="calcCondition">Condition</label>
+                            <select id="calcCondition" class="form-input">
+                                <option value="excellent">Excellent</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="calcPrice">Estimated New Price ($)</label>
+                            <input type="number" id="calcPrice" class="form-input" placeholder="100" min="1" step="0.01">
+                        </div>
+
+                        <button class="btn btn-primary" id="calculateBtn">Calculate Impact</button>
+                    </div>
+
+                    <div class="calculator-results" id="calculatorResults" style="display: none;">
+                        <h4>Environmental Impact of Buying Second-Hand</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-icon">🌍</div>
+                                <div class="result-content">
+                                    <div class="result-number" id="calcCarbon">0 kg</div>
+                                    <div class="result-label">CO₂ Saved</div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-icon">💧</div>
+                                <div class="result-content">
+                                    <div class="result-number" id="calcWater">0 L</div>
+                                    <div class="result-label">Water Saved</div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-icon">💰</div>
+                                <div class="result-content">
+                                    <div class="result-number" id="calcMoney">$0</div>
+                                    <div class="result-label">Money Saved</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="results-explanation">
+                            <p>By choosing second-hand over new, you're making a significant positive impact on the environment!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Impact -->
+            <section class="community-section">
+                <h3>Community Impact</h3>
+                <div class="community-stats" id="communityStats">
+                    <div class="community-card">
+                        <div class="community-icon">👥</div>
+                        <div class="community-content">
+                            <div class="community-number" id="totalUsers">0</div>
+                            <div class="community-label">Active Users</div>
+                        </div>
+                    </div>
+
+                    <div class="community-card">
+                        <div class="community-icon">📦</div>
+                        <div class="community-content">
+                            <div class="community-number" id="totalProducts">0</div>
+                            <div class="community-label">Items Saved</div>
+                        </div>
+                    </div>
+
+                    <div class="community-card">
+                        <div class="community-icon">🌍</div>
+                        <div class="community-content">
+                            <div class="community-number" id="totalCarbon">0 kg</div>
+                            <div class="community-label">Total CO₂ Saved</div>
+                        </div>
+                    </div>
+
+                    <div class="community-card">
+                        <div class="community-icon">💧</div>
+                        <div class="community-content">
+                            <div class="community-number" id="totalWater">0 L</div>
+                            <div class="community-label">Total Water Saved</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="community-message">
+                    <h4>Together We're Making a Difference!</h4>
+                    <p>Every item you buy or sell on EcoMarket contributes to a more sustainable future. Join our growing community of eco-conscious consumers making a real impact.</p>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="transactions-section">
+                <h3>Recent Eco Transactions</h3>
+                <div class="transactions-list" id="transactionsList">
+                    <!-- Transactions will be loaded here -->
+                </div>
+                <div class="empty-transactions" id="emptyTransactions" style="display: none;">
+                    <div class="empty-icon">📊</div>
+                    <h4>No transactions yet</h4>
+                    <p>Start buying or selling to see your environmental impact!</p>
+                    <a href="marketplace.html" class="btn btn-primary">Browse Items</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/eco-dashboard.js"></script>
+</body>
+</html>
